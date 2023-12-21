@@ -35,19 +35,17 @@ CREATE table phim(
 )
 
 -- # tạo data (row)
-INSERT INTO users(full_name,email,age,gender,address) VALUES
-('Son Tung MTP','sep@gmail.com',30,1,'HocMon'),
-('Mono','mono@gmail.com',19,1,'HocMon')
-('Alice Johnson', 'alice.johnson@example.com', 28, 2, '321 Maple Lane'),
-  ('Charlie Brown', 'charlie.brown@example.com', 35, 1, '555 Elm Street'),
-  ('Eva Martinez', 'eva.martinez@example.com', 40, 2, '777 Birch Avenue'),
-  ('David Lee', 'david.lee@example.com', 32, 1, '888 Cedar Road'),
-  ('Grace Wang', 'grace.wang@example.com', 27, 2, '999 Oak Drive'),
-  ('Michael Miller', 'michael.miller@example.com', 45, 1, '111 Pine Court'),
-  ('Sophia Kim', 'sophia.kim@example.com', 29, 2, '222 Spruce Lane'),
-  ('Matthew Davis', 'matthew.davis@example.com', 38, 1, '333 Redwood Avenue'),
-  ('Olivia Garcia', 'olivia.garcia@example.com', 31, 2, '444 Cedar Drive'),
-  ('William Smith', 'william.smith@example.com', 33, 1, '666 Walnut Road');
+INSERT INTO users(id,full_name,email,age,gender,address) VALUES
+(1,'Alice Johnson', 'alice.johnson@example.com', 28, 2, '321 Maple Lane'),
+  (2,'Charlie Brown', 'charlie.brown@example.com', 35, 1, '555 Elm Street'),
+  (3,'Eva Martinez', 'eva.martinez@example.com', 40, 2, '777 Birch Avenue'),
+  (4,'David Lee', 'david.lee@example.com', 32, 1, '888 Cedar Road'),
+  (5,'Grace Wang', 'grace.wang@example.com', 27, 2, '999 Oak Drive'),
+  (6,'Michael Miller', 'michael.miller@example.com', 45, 1, '111 Pine Court'),
+  (7,'Sophia Kim', 'sophia.kim@example.com', 29, 2, '222 Spruce Lane'),
+  (8,'Matthew Davis', 'matthew.davis@example.com', 38, 1, '333 Redwood Avenue'),
+  (9,'Olivia Garcia', 'olivia.garcia@example.com', 31, 2, '444 Cedar Drive'),
+  (10,'William Smith', 'william.smith@example.com', 33, 1, '666 Walnut Road');
 
 -- # lấy data từ table
 -- # select full_name,email,age from users;
@@ -83,3 +81,12 @@ where email = 'alice.johnson@example.com' -- buộc phải có, không đổi h�
 -- # delete data
 DELETE from users
 where email = 'alice.johnson@example.com'
+
+select * from users;
+--# id - khóa chính 
+alter TABLE users
+add column id INT NOT NULL;
+
+# tạo primary key user_id
+alter table users 
+add column user_id INT PRIMARY key auto_increment;

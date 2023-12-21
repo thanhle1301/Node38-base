@@ -1,0 +1,12 @@
+# git
+git clone <repository github>
+#câu lệnh push code lên git
+#b1:
+    git status -> check những file mà mình muốn push code #
+#b2:
+    git add. -> add tất cả code lên git 
+#b3 :
+    git commit -m"ten commit "
+
+#b4 :
+    git pus
