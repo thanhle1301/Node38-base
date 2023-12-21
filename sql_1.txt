@@ -1,0 +1,85 @@
+-- # tao database
+CREATE DATABASE node38;
+
+-- # tạo Table
+-- # quy tắc đặt ten table
+-- # ko đặt tên table trung với keyword của mysql: create, table,...
+-- # tên table ko chứa những ký tự đặc biệt: # ! `^,...
+-- # tên liền nhau: rạp phim -> rap phim mà phải liền nhau, có 2 từ có dấu _ -> rap_phim
+-- # tên ko được có dấu. rạp phim -> rap_phim
+-- # datatype có 3 kiểu data chính: số(number), chữ(string), boolean
+create TABLE users(
+	full_name varchar(30),
+	email varchar(30),
+	age INTEGER,
+	gender INTEGER,
+	address VARCHAR(100)
+)
+
+
+
+-- # thêm column vao table
+ALTER table users -- chỉ định table mà mình muốn sữa
+add column tinh_trang_hon_nhan VARCHAR(5)
+
+
+-- # sửa datatype của column
+ALTER table users
+modify column address varchar(255)
+
+CREATE table phim(
+	ten_phim varchar(30),
+	rating INTEGER,
+	mo_ta VARCHAR(255),
+	thoi_luong INTEGER
+)
+
+-- # tạo data (row)
+INSERT INTO users(full_name,email,age,gender,address) VALUES
+('Son Tung MTP','sep@gmail.com',30,1,'HocMon'),
+('Mono','mono@gmail.com',19,1,'HocMon')
+('Alice Johnson', 'alice.johnson@example.com', 28, 2, '321 Maple Lane'),
+  ('Charlie Brown', 'charlie.brown@example.com', 35, 1, '555 Elm Street'),
+  ('Eva Martinez', 'eva.martinez@example.com', 40, 2, '777 Birch Avenue'),
+  ('David Lee', 'david.lee@example.com', 32, 1, '888 Cedar Road'),
+  ('Grace Wang', 'grace.wang@example.com', 27, 2, '999 Oak Drive'),
+  ('Michael Miller', 'michael.miller@example.com', 45, 1, '111 Pine Court'),
+  ('Sophia Kim', 'sophia.kim@example.com', 29, 2, '222 Spruce Lane'),
+  ('Matthew Davis', 'matthew.davis@example.com', 38, 1, '333 Redwood Avenue'),
+  ('Olivia Garcia', 'olivia.garcia@example.com', 31, 2, '444 Cedar Drive'),
+  ('William Smith', 'william.smith@example.com', 33, 1, '666 Walnut Road');
+
+-- # lấy data từ table
+-- # select full_name,email,age from users;
+select * from users;
+-- # * : lấy tất cả column trong table đó
+
+-- # đổi ten column( cùn cơm ), column name trong table ko đổi
+select full_name As ho_va_ten from users;
+
+-- # lấy danh sách những tên có tuổi từ 30-35 và sắp xếp giảm dần ( tăng dân )
+select * from users
+where age between 30 and 35 -- điều kiện lấy dữ liệu
+-- between ... and ...
+-- tăng dần : asc
+-- giảm dần : desc
+order by age DESC
+
+-- # tìm tất cả những người có chữ D
+select * from users
+where full_name like '%D%'
+-- # %D -> tìm ra ng có chữ D đằng sau CUỐI DÙNG , edfewfewD
+-- # D% -> Dcvdfmkbklmber;, Dregrgerger ....
+
+select * from users
+where (age between 20 and 40) and full_name like '%D%'
+
+-- # update data
+-- # update, delete -> phải có where ở đâu
+update users
+set full_name = 'Alice'
+where email = 'alice.johnson@example.com' -- buộc phải có, không đổi hết (where phải có cực kì quan trọng trong UPDATE và DELETE ) -- sau khi làm là không thể sửa lại đâu
+
+-- # delete data
+DELETE from users
+where email = 'alice.johnson@example.com'
